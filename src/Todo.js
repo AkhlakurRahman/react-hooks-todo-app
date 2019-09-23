@@ -1,7 +1,24 @@
 import React from 'react';
 
-const Todo = ({ todo, index }) => {
-  return <div className='todo'>{todo.text}</div>;
+import './Todo.css';
+
+const Todo = ({ todo, index, completeTodo, deleteTodo }) => {
+  return (
+    <div className='todo'>
+      <div
+        onClick={() => completeTodo(index)}
+        style={{
+          textDecoration: todo.isCompleted ? 'line-through' : '',
+          cursor: 'pointer'
+        }}
+      >
+        {todo.text}
+      </div>
+      <button className='delete-button' onClick={() => deleteTodo(index)}>
+        <i className='fas fa-trash-alt'></i>
+      </button>
+    </div>
+  );
 };
 
 export default Todo;
